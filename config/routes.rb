@@ -1,4 +1,8 @@
 ToiletMaster::Application.routes.draw do
+  resources :reviews
+
+  resources :toilets
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
