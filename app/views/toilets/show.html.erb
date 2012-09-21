@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @toilet.name %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @toilet.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @toilet.longitude %>
+</p>
+
+
+<%= link_to 'Edit', edit_toilet_path(@toilet) %> |
+<%= link_to 'Back', toilets_path %>
