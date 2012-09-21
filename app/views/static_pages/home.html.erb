@@ -1,2 +1,39 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<h1>ToiletMaster</h1>
+
+<%= link_to 'Add toilet review', new_review_path %>
+
+<h2>Toilet reviews feed</h2>
+<table width="80%" bgcolor="#EEEEFF" border="2">
+  <% @reviews.each do |review| %>
+      <tr>
+        <td>
+          <table width="100%">
+            <tr>
+              <td colspan="2"><%= review.toilet_id %></td>
+            </tr>
+            <tr>
+              <td width="60%">
+                <i>Reviewed by <%= review.reviewer %></i><br>
+                <p>
+                  <b><%=review.detail%></b>
+                </p>
+              </td>
+              <td>
+                <b>Napkin:</b> Yes<br>
+                <b>Disabled:</b> Supported<br>
+                <b>Clean:</b> <%= review.clean %>/10<br>
+                <b>Comfort:</b> <%= review.clean %>/10<br>
+                <b>Location:</b> <%= review.clean %>/10<br>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" align="right">
+                <%= link_to 'Edit', edit_review_path(review) %>
+                <%= link_to 'Remove', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+  <% end %>
+</table>
