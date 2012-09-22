@@ -6,6 +6,12 @@ describe "StaticPages" do
       visit '/static_pages/home'
       page.should have_content('ToiletMaster')
     end
+
+    it "'s title should contain the word 'ToiletMaster'" do
+      visit '/static_pages/home'
+      page.should have_selector('title',
+                                :text => "ToiletMaster")
+    end
   end
 
   describe "Help page" do
@@ -14,6 +20,12 @@ describe "StaticPages" do
       visit '/static_pages/help'
       page.should have_content('Help')
     end
+
+    it "'s title should contain the word 'Help'" do
+      visit '/static_pages/help'
+      page.should have_selector('title',
+                                :text => "Help")
+    end
   end
 
   describe "About page" do
@@ -21,6 +33,12 @@ describe "StaticPages" do
     it "should have the content 'About Us'" do
       visit '/static_pages/about'
       page.should have_content('About Us')
+    end
+
+    it "'s title should contain the word 'About'" do
+      visit '/static_pages/about'
+      page.should have_selector('title',
+                                :text => "About")
     end
   end
 end
