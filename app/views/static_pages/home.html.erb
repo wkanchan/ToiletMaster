@@ -9,7 +9,9 @@
         <td>
           <table width="100%">
             <tr>
-              <td colspan="2"><%= review.toilet_id %></td>
+              <td colspan="2">
+                <span style="font-size: large; "><%= Toilet.find(review.toilet_id).name %></span>
+                <%= link_to 'Map', Toilet.find(review.toilet_id).url_to_google_maps %></td>
             </tr>
             <tr>
               <td width="60%">
