@@ -7,7 +7,7 @@
 
 <p>
   <b>Toilet:</b>
-  <%= @review.toilet_id %>
+  <%= Toilet.find(@review.toilet_id).name %>
 </p>
 
 <p>
@@ -21,5 +21,6 @@
 </p>
 
 
-<%= link_to 'Edit', edit_review_path(@review) %> |
-<%= link_to 'Back', reviews_path %>
+<%#= link_to 'Edit', edit_review_path(@review) %>
+<%#= link_to 'Back', reviews_path %>
+<%= link_to 'Back to home page','/static_pages/home' %>
