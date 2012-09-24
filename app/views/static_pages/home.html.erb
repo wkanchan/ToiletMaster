@@ -1,8 +1,9 @@
 <% provide(:title, 'The social network for toilet reviews.') %>
 
-<%= link_to 'Add toilet review', new_review_path %>
-
 <h2>Toilet reviews feed</h2>
+<p>
+<%= link_to 'Add toilet review', new_review_path %>
+</p>
 <table width="80%" bgcolor="#EEEEFF" border="2">
   <% @reviews.each do |review| %>
       <tr>
@@ -10,11 +11,11 @@
           <table width="100%">
             <tr>
               <td colspan="2">
-                <span style="font-size: large; "><%= Toilet.find(review.toilet_id).name %></span>
+                <span style="font-size: x-large; "><%= Toilet.find(review.toilet_id).name %></span>
                 <%= link_to 'Map', Toilet.find(review.toilet_id).url_to_google_maps %></td>
             </tr>
             <tr>
-              <td width="60%">
+              <td width="60%" valign="top">
                 <i>Reviewed by <%= review.reviewer %></i><br>
                 <p>
                   <b><%=review.detail%></b>
