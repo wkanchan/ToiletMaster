@@ -1,10 +1,22 @@
 <% provide(:title, 'The social network for toilet reviews.') %>
 
+<div class="center hero-unit">
+  <h1>Welcome to ToiletMaster</h1>
+
+  <h2>
+    ToiletMaster is a social network that collects toilet reviews from toilet lovers!
+  </h2>
+
+  <%= link_to "Sign up now!", '#', class: "btn btn-large btn-primary" %>
+</div>
+
+<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org' %>
+
 <h2>Toilet reviews feed</h2>
 <p>
 <%= link_to 'Add toilet review', new_review_path %>
 </p>
-<table width="80%" bgcolor="#EEEEFF" border="2">
+<table width="80%">
   <% @reviews.each do |review| %>
       <tr>
         <td>

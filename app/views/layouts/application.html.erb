@@ -5,23 +5,13 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
 </head>
 <body>
-<h1>ToiletMaster</h1>
-<table style="background-color: #ddddff;">
-  <tr>
-    <td>
-      <%= link_to 'Home','/static_pages/home' %>
-    </td>
-    <td>
-      <%= link_to 'Help','/static_pages/help' %>
-    </td>
-    <td>
-      <%= link_to 'About Us','/static_pages/about' %>
-    </td>
-  </tr></table>
-
-<%= yield %>
-
+    <%= render 'layouts/header' %>
+    <div class="container">
+        <%= yield %>
+        <%= render 'layouts/footer' %>
+    </div>
 </body>
 </html>
