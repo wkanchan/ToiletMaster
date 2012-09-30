@@ -10,6 +10,7 @@ describe "StaticPages" do
     it { should have_content('ToiletMaster') }
     it { should have_selector('title',      text: full_title('')) }
     it { should_not have_selector('title',  text: "Home") }
+    #it { should have_selector('a', text: "Sign up")}
 
   end
 
