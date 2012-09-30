@@ -1,67 +1,43 @@
 require 'spec_helper'
 
 describe "StaticPages" do
-  describe "Home page" do
-    it "should have the content 'ToiletMaster'" do
-      visit root_path
-      page.should have_content('ToiletMaster')
-    end
 
-    it "'s title should contain the word 'ToiletMaster'" do
-      visit root_path
-      page.should have_selector('title',
-                                :text => "ToiletMaster")
-    end
+  subject { page } # makes page the subject for every test case
+
+  describe "Home page" do
+    before { visit root_path } # visit root_path before beginning each test
+
+    it { should have_content('ToiletMaster') }
+    it { should have_selector('title',      text: full_title('')) }
+    it { should_not have_selector('title',  text: "Home") }
+
   end
 
   describe "Help page" do
+    before { visit help_path } # visit help_path before beginning each test
 
-    it "should have the h1 'Help Center'" do
-      visit help_path
-      page.should have_selector('h1', text: "Help Center")
-    end
+    it { should have_content('Help') }
+    it { should have_selector('h1',         text: "Help Center") }
+    it { should have_selector('title',      text: full_title("Help")) }
 
-    it "should have the content 'Help'" do
-      visit help_path
-      page.should have_content('Help')
-    end
-
-    it "'s title should contain the word 'Help'" do
-      visit help_path
-      page.should have_selector('title',
-                                text: "Help")
-    end
   end
 
   describe "About page" do
+    before { visit about_path } # visit about_path before beginning each test
 
-    it "should have the h1 'About Us'" do
-      visit about_path
-      page.should have_selector('h1', text: "About Us")
-    end
+    it { should have_content('About Us') }
+    it { should have_selector('h1',         text: "About Us") }
+    it { should have_selector('title',      text: full_title("About Us")) }
 
-    it "should have the content 'About Us'" do
-      visit about_path
-      page.should have_content('About Us')
-    end
-
-    it "'s title should contain the word 'About'" do
-      visit about_path
-      page.should have_selector('title',
-                                :text => "About")
-    end
   end
 
   describe "Contact page" do
+    before { visit contact_path } # visit contact_path before beginning each test
 
-    it "should have the h1 'Contact'" do
-      visit contact_path
-      page.should have_selector('h1', text: "Contact")
-    end
+    it { should have_content('Contact') }
+    it { should have_selector('h1',         text: "Contact") }
+    it { should have_selector('title',      text: full_title("Contact")) }
 
-    it "should have the title 'Contact'" do
-      visit contact_path
-      page.should have_selector('title', text: "Contact")
-    end
   end
+
 end

@@ -1,12 +1,12 @@
 <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <%=  link_to "ToiletMaster", '#', id: "logo" %>
+      <%=  link_to "ToiletMaster", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Home",'/static_pages/home' %></li>
-          <li><%= link_to "Help",'/static_pages/help' %></li>
-          <li><%= link_to "About Us",'/static_pages/about' %></li>
+          <li><%= link_to "Home",   root_path %></li>
+          <li><%= link_to "Help",   help_path %></li>
+          <li><%= link_to "About Us",about_path %></li>
           <li>
             <form class="form-inline">
               <input type="text" class="input-small" placeholder="Email">
@@ -14,7 +14,7 @@
               <label class="checkbox">
                 <input type="checkbox"> Remember me
               </label>
-              <button type="submit" class="btn">Log in</button>
+              <button type="submit" class="btn">Sign in</button>
               <%= link_to "Sign up", '#', class: "btn btn-primary" %>
             </form>
           </li>
