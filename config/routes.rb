@@ -1,13 +1,17 @@
 ToiletMaster::Application.routes.draw do
 
-  get "users/new"        # auto-gen by Users controller generation
+  # Get the REST-style URI to work by adding this line
+  resources :users
+  # This line is no need since we included above line
+  #get "users/new"        # auto-gen by Users controller generation
 
+  # we won't use these since we use "match" instead
   #get "static_pages/home"
   #get "static_pages/help"
   #get "static_pages/about"
   #get "static_pages/contact"
 
-  root :to => "static_pages#home" # better than "match '/', to: 'static_pages#home'"
+  root to: "static_pages#home" # better than "match '/', to: 'static_pages#home'"
   match '/help',    to: 'static_pages#help'   # this gives us "help_path"
   match '/about',   to: 'static_pages#about'  # and so on..
   match '/contact', to: 'static_pages#contact'

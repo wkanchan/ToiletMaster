@@ -20,7 +20,8 @@ group :production do
 end
 
 group :test do
-  gem 'capybara','1.1.2'
+  gem 'capybara','1.1.2'            # helps test web UI, simulate click, fill form
+  gem 'factory_girl_rails', '4.1.0' # helps test DB
 end
 
 # Gems used only for assets and not required
