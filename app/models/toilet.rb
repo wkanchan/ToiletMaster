@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: toilets
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  latitude   :float
+#  longitude  :float
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Toilet < ActiveRecord::Base
   # this creates getters & setters
   attr_accessible :latitude, :longitude, :name
