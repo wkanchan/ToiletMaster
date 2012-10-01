@@ -18,6 +18,9 @@ class User < ActiveRecord::Base
   # a callback to force convert email to lowercase before save
   before_save { |user| user.email = email.downcase }
 
+  # a callback to call :create_remember_token (which is a private fn) before save
+  before_save :create_remember_token
+
   # :name must not be blank or whitespace & length <= 50
   validates :name,  presence: true, length: {maximum: 50}
 
@@ -33,4 +36,9 @@ class User < ActiveRecord::Base
   # :password_confirmation must be presence
   validates :password_confirmation, presence: true
 
+  private
+
+  def create_remember_token
+    self.remember_token = SecureRandom.urlsafe_base64
+  end
 end

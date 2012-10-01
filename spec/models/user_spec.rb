@@ -25,6 +25,7 @@ describe User do
   it { should respond_to(:password_digest) }  # there's password_digest column
   it { should respond_to(:password) }         # require the presence of password
   it { should respond_to(:password_confirmation) }  # and match with pwd conf
+  it { should respond_to(:remember_token) }   # for session remember
   it { should respond_to(:authenticate) }     # for user authentication "method"
 
   # with "subject { @user }", this block is analogous to calling @user.valid?
@@ -117,6 +118,12 @@ describe User do
       it { should_not == user_for_invalid_password }
       specify { user_for_invalid_password.should be_false }
     end
+  end
+
+  describe "remember token" do
+    before { @user.save }
+    # this is equivalent to "it { @user.remember_token.should_not be_blank }"
+    its(:remember_token) { should_not be_blank }
   end
 
 end

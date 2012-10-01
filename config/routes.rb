@@ -5,6 +5,9 @@ ToiletMaster::Application.routes.draw do
   # This line is no need since we included above line
   #get "users/new"        # auto-gen by Users controller generation
 
+  # Get the REST-style URI -- only new/create/destroy (no update)
+  resources :sessions, only: [:new, :create, :destroy]
+
   # we won't use these since we use "match" instead
   #get "static_pages/home"
   #get "static_pages/help"
@@ -16,6 +19,8 @@ ToiletMaster::Application.routes.draw do
   match '/about',   to: 'static_pages#about'  # and so on..
   match '/contact', to: 'static_pages#contact'
   match '/signup',  to: 'users#new'
+  match '/signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete  # should be invoked using HTTP DELETE
 
   resources :reviews
   resources :toilets
