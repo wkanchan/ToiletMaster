@@ -39,6 +39,14 @@ textarea {
   margin: 0px;
 }
 
+.text-white-color {
+  color: #fff !important;
+}
+
+.affix {
+  position: fixed;
+}
+
 /* typography */
 
 h1,h2,h3,h4,h5,h6 {
@@ -193,6 +201,7 @@ input, textarea, select, .uneditable-input {
 
 .edit_remove {
   display: block;
+  text-align: right;
 }
 
 .gravatar {

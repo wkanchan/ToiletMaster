@@ -1,0 +1,7 @@
+$('#new_review').each(function(){
+    this.reset();
+});
+
+$("#reviews_feed").prepend("<%= escape_javascript(render(@review)) %>");
+
+$("html, body").animate({ scrollTop: 0 }, "fast");

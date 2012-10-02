@@ -1,3 +1,4 @@
+<% if review %>
 <li>
   <span class="toilet-name"><%= review.toilet.name %></span>
   <span class="toilet-clean"> (Score: <%= review.clean %>/10)</span>
@@ -9,8 +10,9 @@
   </span>
   <% if review.user.id == current_user.id %>
     <span class="edit_remove">
-        <%= link_to 'Edit', edit_review_path(review) %>
-        <%= link_to 'Remove', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Edit', edit_review_path(review), class: "btn" %>
+        <%= link_to 'Remove', review, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
     </span>
   <% end %>
 </li>
+<% end %>

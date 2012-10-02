@@ -8,26 +8,28 @@
         ToiletMaster is a social network that collects toilet reviews from toilet lovers!
       </h2>
 
-      <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+      <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary text-white-color" %>
 
     </div>
 
 <% else %>
 
     <div class="row">
-      <aside class="span3">
-        <section>
-          <%= render 'shared/user_info' %>
-        </section>
-        <section>
-          <%= render 'shared/review_form' %>
-        </section>
+      <aside class="span3 affix">
+            <section>
+              <%= render 'shared/user_info' %>
+            </section>
+            <section>
+              <%= render 'shared/review_form' %>
+            </section>
       </aside>
+      <div class="span3">&nbsp;</div>
       <div class="span9">
         <h3>Live Toilet Reviews Feed</h3>
 
-        <ol class="reviews">
+        <ol id="reviews_feed" class="reviews">
           <%= render @reviews %>
+          <%#= render :partial => @reviews %>
         </ol>
 
       </div>

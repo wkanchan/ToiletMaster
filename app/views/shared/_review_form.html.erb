@@ -1,6 +1,14 @@
 <p>
   <h3>Add review</h3>
-<%= form_for(@review) do |f| %>
+
+
+<%#= form_tag(:url => {:action => 'create'},
+             :update => "reviews",
+             :position => :top,
+             :html => {:id => 'reviews'},
+             :remote => true ) do |f| %>
+
+<%= form_for(@review, remote: true) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="field">
 

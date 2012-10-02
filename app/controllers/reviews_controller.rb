@@ -46,10 +46,13 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to root_path, notice: 'Review was successfully created.' }
-        format.json { render json: @review, status: :created, location: @review }
+        #format.html { redirect_to root_path, notice: 'Review was successfully created.' }
+        #format.json { render json: @review, status: :created, location: @review }
+        format.html { redirect_to root_path }
+        format.js { @review }
       else
-        format.html { render action: "new" }
+        #format.html { render action: "new" }
+        format.html { redirect_to root_path }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
@@ -74,12 +77,14 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1
   # DELETE /reviews/1.json
   def destroy
+
     @review = Review.find(params[:id])
     @review.destroy
 
     respond_to do |format|
       format.html { redirect_to root_path, notice: 'Review was successfully removed.' }
       format.json { head :no_content }
+      #format.js
     end
   end
 end
