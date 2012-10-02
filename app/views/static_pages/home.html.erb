@@ -1,7 +1,7 @@
 <% provide(:title, 'The social network for toilet reviews.') %>
 
-<div class="row">
-  <div class="span5 center">
+<% if !signed_in? %>
+    <div class="center hero-unit">
       <h1>Welcome to ToiletMaster</h1>
 
       <h2>
@@ -10,52 +10,29 @@
 
       <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
 
-  </div>
-  <div class="span7">
-    <h2>Toilet reviews feed</h2>
-    <p>
-    <%= link_to 'Add toilet review', new_review_path %>
-    </p>
-    <table class="table table-striped">
-      <tbody>
-      <% @reviews.each do |review| %>
-          <tr>
-            <td>
-              <table class="table">
-                <tr>
-                  <td colspan="2">
-                    <span style="font-size: x-large; "><%= Toilet.find(review.toilet_id).name %></span>
-                    <%= link_to 'Map', Toilet.find(review.toilet_id).url_to_google_maps %></td>
-                </tr>
-                <tr>
-                  <td>
-                    <i>Reviewed by <%= review.reviewer %></i><br>
-                    <p>
-                      <b><%=review.detail%></b>
-                    </p>
-                  </td>
-                  <td>
-                    <b>Napkin:</b> Yes<br>
-                    <b>Disabled:</b> Supported<br>
-                    <b>Clean:</b> <%= review.clean %>/10<br>
-                    <b>Comfort:</b> <%= review.clean %>/10<br>
-                    <b>Location:</b> <%= review.clean %>/10<br>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2">
-                    <%= link_to 'Edit', edit_review_path(review) %>
-                    <%= link_to 'Remove', review, method: :delete, data: { confirm: 'Are you sure?' } %>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
+    </div>
+
+<% else %>
+
+    <div class="row">
+      <aside class="span3">
+        <section>
+          <%= render 'shared/user_info' %>
+        </section>
+        <section>
+          <%= render 'shared/review_form' %>
+        </section>
+      </aside>
+      <div class="span9">
+        <h3>Live Toilet Reviews Feed</h3>
+
+        <ol class="reviews">
+          <%= render @reviews %>
+        </ol>
+
+      </div>
+    </div>
+<% end %>
 
 
 </body>

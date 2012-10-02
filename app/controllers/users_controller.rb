@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       # handle successful save
       sign_in @user # signin upon signup
       flash[:success] = "Welcome to ToiletMaster! Enjoy toilets!"
-      redirect_to @user
+      redirect_to root_path
     else
       render 'new'
     end

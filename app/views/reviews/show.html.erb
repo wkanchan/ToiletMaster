@@ -2,17 +2,17 @@
 
 <p>
   <b>Reviewer:</b>
-  <%= @review.reviewer %>
+  <%= @review.user.name %>
 </p>
 
 <p>
   <b>Toilet:</b>
-  <%= Toilet.find(@review.toilet_id).name %>
+  <%= @review.toilet.name %>
 </p>
 
 <p>
-  <b>Detail:</b>
-  <%= @review.detail %>
+  <b>Content:</b>
+  <%= @review.content %>
 </p>
 
 <p>
@@ -23,4 +23,4 @@
 
 <%#= link_to 'Edit', edit_review_path(@review) %>
 <%#= link_to 'Back', reviews_path %>
-<%= link_to 'Back to home page','/static_pages/home' %>
+<%= link_to 'Back to home page',root_path %>

@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :reviewer %><br />
-    <%= f.text_field :reviewer %>
+    <%= f.label :user %><br />
+    <%= current_user.name %>
   </div>
   <div class="field">
     <%= f.label :toilet_id %><br />
     <%= f.number_field :toilet_id %>
   </div>
   <div class="field">
-    <%= f.label :detail %><br />
-    <%= f.text_field :detail %>
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
   </div>
   <div class="field">
     <%= f.label :clean %><br />

@@ -2,11 +2,13 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  email           :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  password_digest :string(255)
+#  remember_token  :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -14,6 +16,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   # from secure_password.rb -- makes :password_digest encrypt password automatically
   has_secure_password
+  # 1 user has many reviews, and destroying User will destroy its depending reviews
+  has_many :reviews, dependent: :destroy
 
   # a callback to force convert email to lowercase before save
   before_save { |user| user.email = email.downcase }

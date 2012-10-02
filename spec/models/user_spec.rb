@@ -2,11 +2,13 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  email           :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  password_digest :string(255)
+#  remember_token  :string(255)
 #
 
 require 'spec_helper'
@@ -27,6 +29,7 @@ describe User do
   it { should respond_to(:password_confirmation) }  # and match with pwd conf
   it { should respond_to(:remember_token) }   # for session remember
   it { should respond_to(:authenticate) }     # for user authentication "method"
+  it { should respond_to(:reviews) }          # for reviews of this user
 
   # with "subject { @user }", this block is analogous to calling @user.valid?
   it { should be_valid }
@@ -124,6 +127,29 @@ describe User do
     before { @user.save }
     # this is equivalent to "it { @user.remember_token.should_not be_blank }"
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "review associations" do
+
+    before { @user.save }
+    let!(:older_review) do
+      FactoryGirl.create(:review, user: @user, created_at: 1.day.ago, toilet_id:1, clean:10)
+    end
+    let!(:newer_review) do
+      FactoryGirl.create(:review, user: @user, created_at: 1.hour.ago, toilet_id:1, clean:10)
+    end
+
+    it "should have the right review in the right order" do
+      @user.reviews.should == [newer_review, older_review]
+    end
+
+    it "should destroy associated reviews" do
+      reviews = @user.reviews
+      @user.destroy
+      reviews.each do |review|
+        Review.find_by_id(review.id).should be_nil
+      end
+    end
   end
 
 end

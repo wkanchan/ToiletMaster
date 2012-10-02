@@ -1,0 +1,16 @@
+<p>
+  <h3>Add review</h3>
+<%= form_for(@review) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="field">
+
+      <%= f.label "Select toilet" %>
+      <%= f.select :toilet_id, @toilet_list %>
+
+      <%#= f.number_field :toilet_id, placeholder: "Toilet ID" %>
+      <%= f.number_field :clean, placeholder: "Cleanliness score 0 to 10" %>
+      <%= f.text_area :content, placeholder: "Compose new toilet review..." %>
+    </div>
+    <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>
+</p>

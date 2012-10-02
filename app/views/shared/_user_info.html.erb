@@ -1,0 +1,9 @@
+<h1>
+  <%= current_user.name %>
+</h1>
+<span>
+  You have <%= pluralize(current_user.reviews.count, "review") %>.
+</span><br>
+<span>
+  <%= link_to "View my profile", current_user %>
+</span>

@@ -1,0 +1,16 @@
+<li>
+  <span class="toilet-name"><%= review.toilet.name %></span>
+  <span class="toilet-clean"> (Score: <%= review.clean %>/10)</span>
+  <span class="toilet-map"><%= link_to 'Click to see map', review.toilet.url_to_google_maps %></span>
+  <span class="content">" <%= review.content %> "</span>
+  <span class="reviewer"> Reviewed by <%= review.user.name %></span>
+  <span class="timestamp">
+    <%= time_ago_in_words(review.created_at) %> ago.
+  </span>
+  <% if review.user.id == current_user.id %>
+    <span class="edit_remove">
+        <%= link_to 'Edit', edit_review_path(review) %>
+        <%= link_to 'Remove', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </span>
+  <% end %>
+</li>

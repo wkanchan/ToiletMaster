@@ -146,3 +146,62 @@ input, textarea, select, .uneditable-input {
   @extend .control-group;
   @extend .error;
 }
+
+/* reviews */
+
+.reviews {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+
+.toilet-name {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.toilet-map {
+  display: block;
+}
+
+.toilet-clean {
+  font-size: 1.3em;
+  font-style: oblique;
+}
+
+.content {
+  font-size: 1.5em;
+  text-align: center;
+  font-style: oblique;
+  display: block;
+}
+
+.reviewer {
+  display: block;
+  text-align: right;
+}
+
+.timestamp {
+  display: block;
+  text-align: right;
+  color: $grayLight;
+}
+
+.edit_remove {
+  display: block;
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+aside {
+  textarea {
+    height: 100px !important;
+    margin-bottom: 5px;
+  }
+}
