@@ -1,6 +1,6 @@
 <p>
-  <h3>Add review</h3>
-
+  <h3>Add a review</h3>
+  <br>
 
 <%#= form_tag(:url => {:action => 'create'},
              :update => "reviews",
@@ -12,13 +12,38 @@
     <%= render 'shared/error_messages', object: f.object %>
     <div class="field">
 
-      <%= f.label "Select toilet" %>
       <%= f.select :toilet_id, @toilet_list %>
 
       <%#= f.number_field :toilet_id, placeholder: "Toilet ID" %>
-      <%= f.number_field :clean, placeholder: "Cleanliness score 0 to 10" %>
+      <%= f.number_field :clean, placeholder: "Cleanliness score 0 to 10", in: 0..10 %>
       <%= f.text_area :content, placeholder: "Compose new toilet review..." %>
     </div>
-    <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+    <%= f.submit "Post", class: "btn btn-large btn-primary", onclick: "return isValid(this.form)" %>
 <% end %>
 </p>
+<script>
+  function isValid(form) {
+      var select_toilet_id = form.elements["review[toilet_id]"];
+      var number_clean = form.elements["review[clean]"];
+      var text_content = form.elements["review[content]"];
+
+      if (select_toilet_id.value < 0) {
+          alert("Tell me which toilet you want to review");
+          select_toilet_id.focus();
+          return false;
+      }
+      if (number_clean.value == "" || number_clean.value < 0 || number_clean.value > 10) {
+          alert("Please give valid cleanliness score");
+          number_clean.value = "";
+          number_clean.focus();
+          return false;
+      }
+      if (text_content.value.length == 0) {
+          alert("Don't forget to leave a comment!");
+          text_content.focus();
+          return false;
+      }
+      $('#new_review').hide("fast");
+      return true;
+  }
+</script>
