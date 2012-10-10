@@ -1,19 +1,30 @@
 class ToiletsController < ApplicationController
+
+  respond_to :xml, :html, :json
+
   # GET /toilets
   # GET /toilets.json
+  # GET /toilets.xml
   def index
     @toilets = Toilet.all
 
+    respond_to do |format|
+      format.html
+      format.json { render json: @toilets }
+      format.xml { respond_with @toilets }
+    end
   end
 
   # GET /toilets/1
   # GET /toilets/1.json
+  # GET /toilets/1.xml
   def show
     @toilet = Toilet.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @toilet }
+      format.xml { respond_with @toilet }
     end
   end
 

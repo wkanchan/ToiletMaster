@@ -1,24 +1,30 @@
 class ReviewsController < ApplicationController
+
+  respond_to :xml, :html, :json
+
   # GET /reviews
   # GET /reviews.json
+  # GET /reviews.xml
   def index
     @reviews = Review.all
-
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @reviews }
+      format.xml { respond_with @reviews }
     end
   end
 
   # GET /reviews/1
   # GET /reviews/1.json
+  # GET /reviews/1.xml
   def show
     @review = Review.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @review }
+      format.xml { respond_with @review }
     end
   end
 
@@ -46,10 +52,10 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        #format.html { redirect_to root_path, notice: 'Review was successfully created.' }
-        #format.json { render json: @review, status: :created, location: @review }
-        format.html { redirect_to root_path }
-        format.js { @review }
+        format.html { redirect_to root_path, notice: 'Review was successfully created.' }
+        format.json { render json: @review, status: :created, location: @review }
+        # for AJAX request
+        format.js { @review }    # { @review } to send the new @review to be referenced in the JavaScript code!
       else
         #format.html { render action: "new" }
         format.html { redirect_to root_path }
@@ -84,7 +90,8 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to root_path, notice: 'Review was successfully removed.' }
       format.json { head :no_content }
-      #format.js
+      # for AJAX request
+      format.js { @review }
     end
   end
 end

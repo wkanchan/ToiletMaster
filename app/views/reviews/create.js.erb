@@ -4,4 +4,7 @@ $('#new_review').each(function(){
 
 $("#reviews_feed").prepend("<%= escape_javascript(render(@review)) %>");
 
+$("#reviews_feed li:first").hide();
+$("#reviews_feed li:first").show("slow");
+
 $("html, body").animate({ scrollTop: 0 }, "fast");
